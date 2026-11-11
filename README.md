@@ -1,4 +1,4 @@
-# Реверс-редуктор c-r19: portable static site + git-based admin
+# Реверс-редуктор c-r20: portable static site + git-based admin (revision 20, own repo and URL; c-r19 stays as it was)
 
 Revision 19 of the site (2026-11-04). Same look as `v6-demo/c-r18`, rebuilt so it can move between hosts (GitHub Pages, Russian shared hosting, .com, anything that serves files) and so every model, drawing and part has its own address for search engines.
 
@@ -19,7 +19,7 @@ node qa/owner-flow.mjs              # simulates the owner editing (photo, price 
 node qa/test.mjs                    # browser tests (Chromium + WebKit, 1360 and 390 px) + admin loads (needs internet for the CDN)
 ```
 
-Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r19` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
+Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r20` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
 
 ## Admin
 

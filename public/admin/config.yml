@@ -3,14 +3,14 @@
 # Production: needs a GitHub OAuth proxy (see README.md); the host of the site itself does not matter.
 backend:
   name: github
-  repo: siplay01/reverse-reduktor-c-r20
+  repo: siplay01/reverse-reduktor-c-r21
   branch: main
 local_backend: true
 locale: ru
 media_folder: public/img/uploads
 public_folder: /img/uploads
-site_url: https://siplay01.github.io/reverse-reduktor-c-r20/
-display_url: https://siplay01.github.io/reverse-reduktor-c-r20/
+site_url: https://siplay01.github.io/reverse-reduktor-c-r21/
+display_url: https://siplay01.github.io/reverse-reduktor-c-r21/
 collections:
   - name: settings
     label: Настройки сайта

@@ -66,3 +66,4 @@ Clickable callouts on the РРП-300 section drawing, the per-variant selector o
 ## Revision 21 (2026-11-11)
 
 - Hero: crossfade carousel (`settings.json` → `hero.slides`, `hero.slide_seconds`, editable in the admin): owner photo No. 12 cut out on white and the Blender render (round 6). Without JS only the first picture shows; reduced motion = no rotation; hover/focus pauses.
+- Home cards: Dmitry's two drawings (`picture_small`): hydraulic one for РРП-300 and РРП-238, mechanical one for РРП-3Д6 and РРП-3Д12; model pages keep the real photos (`picture`). Card alt in `card_alt`.

@@ -146,6 +146,7 @@ collections:
       - { label: Рисунок или фото изделия, name: picture, widget: image, required: false, hint: "Нажмите «Выбрать изображение» и загрузите файл с компьютера. Лучше горизонтальный, не тяжелее 1-2 МБ." }
       - { label: Рисунок для карточки (необязательно, если пусто, берётся основной), name: picture_small, widget: image, required: false }
       - { label: Подпись к рисунку (alt), name: picture_alt, widget: string, required: false }
+      - { label: Подпись к рисунку карточки (alt, необязательно), name: card_alt, widget: string, required: false }
       - { label: Применяемость, name: applicability, widget: text }
       - label: Ключевые параметры (на карточке)
         name: key

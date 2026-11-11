@@ -84,7 +84,7 @@ const orgLd = { "@context": "https://schema.org", "@type": "Organization", name:
 const modelCard = (m) => {
   const n = parts.filter((p) => p.models.includes(catOf(m).slug)).length;
   const small = rel(m.picture_small || m.picture);
-  const pic = small ? `<a class="mcard-pic is-art${m.status === "new" ? " is-stamp" : ""}" href="${u(`/produkciya/${m.slug}/`)}" tabindex="-1" aria-hidden="true"><img src="${u("/" + small)}" width="640" height="480" alt="${esc(m.picture_alt)}" loading="lazy">${m.status === "new" ? '<span class="stamp is-corner">NEW</span>' : ""}</a>`
+  const pic = small ? `<a class="mcard-pic is-art${m.status === "new" ? " is-stamp" : ""}" href="${u(`/produkciya/${m.slug}/`)}" tabindex="-1" aria-hidden="true"><img src="${u("/" + small)}" width="640" height="480" alt="${esc(m.card_alt || m.picture_alt)}" loading="lazy">${m.status === "new" ? '<span class="stamp is-corner">NEW</span>' : ""}</a>`
     : m.status === "new" ? (S.new_style === "stamp" ? `<a class="mcard-pic is-soon is-stamp" href="${u(`/produkciya/${m.slug}/`)}" tabindex="-1" aria-hidden="true">${soonArt()}<span class="stamp">NEW</span></a>` : `<a class="mcard-pic is-newbig" href="${u(`/produkciya/${m.slug}/`)}" tabindex="-1" aria-hidden="true"><span>NEW</span></a>`)
     : `<a class="mcard-pic is-soon" href="${u(`/produkciya/${m.slug}/`)}" tabindex="-1" aria-hidden="true">${soonArt()}</a>`;
   if (m.status !== "ready") return `<article class="mcard${m.status === "new" ? " mcard-new" : ""}" id="model-${m.slug}">${pic}<div class="mcard-body"><p class="mcard-kind">${m.status === "new" ? "Новая разработка · в работе" : "Муфта сцепления"}</p>

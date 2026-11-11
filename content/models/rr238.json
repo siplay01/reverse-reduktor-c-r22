@@ -7,7 +7,7 @@
   "order": 2,
   "status": "ready",
   "picture": "img/models/rrp238-foto.webp",
-  "picture_small": "img/models/rrp238-foto-640.webp",
+  "picture_small": "img/models/risunok-gidravlicheskij-960.webp",
   "picture_alt": "Реверс-редукторная передача РРП-238, фото",
   "applicability": "дизели ЯМЗ-238 и их модификации",
   "key": [
@@ -70,5 +70,6 @@
     "title": "РРП-238: реверс-редукторная передача, характеристики и запчасти",
     "description": "РРП-238 (СБ238-25-01-13), гидравлический реверс-редуктор. Характеристики, каталог запасных частей с чертежами. Гарантия 12 месяцев. ООО «Дело», Барнаул."
   },
-  "catalog_of": "rrp-300"
+  "catalog_of": "rrp-300",
+  "card_alt": "Гидравлический реверс-редуктор, рисунок"
 }

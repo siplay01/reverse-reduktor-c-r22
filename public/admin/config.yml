@@ -3,14 +3,14 @@
 # Production: needs a GitHub OAuth proxy (see README.md); the host of the site itself does not matter.
 backend:
   name: github
-  repo: siplay01/reverse-reduktor-c-r20
+  repo: siplay01/reverse-reduktor-c-r21
   branch: main
 local_backend: true
 locale: ru
 media_folder: public/img/uploads
 public_folder: /img/uploads
-site_url: https://siplay01.github.io/reverse-reduktor-c-r20/
-display_url: https://siplay01.github.io/reverse-reduktor-c-r20/
+site_url: https://siplay01.github.io/reverse-reduktor-c-r21/
+display_url: https://siplay01.github.io/reverse-reduktor-c-r21/
 collections:
   - name: settings
     label: Настройки сайта
@@ -29,6 +29,15 @@ collections:
               - { label: Подзаголовок, name: lead, widget: text }
               - { label: Рисунок на первом экране, name: picture, widget: image }
               - { label: Рисунок на первом экране (малый, необязательно), name: picture_small, widget: image, required: false }
+              - label: Картинки карусели (сменяются по очереди; если пусто, показывается рисунок выше)
+                name: slides
+                widget: list
+                required: false
+                fields:
+                  - { label: Картинка, name: picture, widget: image }
+                  - { label: Картинка малая (необязательно), name: picture_small, widget: image, required: false }
+                  - { label: Описание картинки (alt), name: alt, widget: string }
+              - { label: Смена картинки, секунд, name: slide_seconds, widget: number, value_type: int, required: false }
               - { label: Подпись, name: picture_caption, widget: string }
               - { label: Пояснение к подписи, name: picture_note, widget: string }
           - label: Большой баннер NEW (новый продукт)

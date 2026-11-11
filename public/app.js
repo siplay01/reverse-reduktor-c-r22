@@ -79,5 +79,13 @@
     if (t.matches("[data-q]")) { cart[+t.dataset.q].q = Math.max(1, parseInt(t.value, 10) || 1); save(); }
   });
   const q0 = new URLSearchParams(location.search).get("q"), f0 = $("[data-filter]"); if (q0 && f0) { f0.value = q0; filterRows(f0); }
+  // ---- hero crossfade: next picture every N seconds; stops on hover/focus and when the visitor asks for reduced motion
+  const fade = $("[data-fade]");
+  if (fade && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const imgs = $$("img", fade); let k = 0, hold = false;
+    ["mouseenter", "focusin"].forEach((e) => fade.addEventListener(e, () => { hold = true; }));
+    ["mouseleave", "focusout"].forEach((e) => fade.addEventListener(e, () => { hold = false; }));
+    setInterval(() => { if (hold || document.hidden) return; imgs[k].classList.remove("on"); k = (k + 1) % imgs.length; imgs[k].classList.add("on"); }, +fade.dataset.fade * 1000);
+  }
   renderConfig(); renderCart();
 })();

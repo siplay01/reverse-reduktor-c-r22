@@ -33,10 +33,23 @@
     "eyebrow": "Инженерные решения для судового флота",
     "title": "Судовые реверс-редукторы. Производство, ремонт, запчасти.",
     "lead": "Реверс-редукторные передачи РРП-300, РРП-238, РРП-3Д6 и РРП-3Д12. Техническое сопровождение, ремонт и подбор запасных частей по заводской документации.",
-    "picture": "img/rrp300-drawing.webp",
-    "picture_small": "img/rrp300-drawing-640.webp",
+    "picture": "img/hero/rrp300-foto-12.webp",
+    "picture_small": "img/hero/rrp300-foto-12-640.webp",
     "picture_caption": "РРП-300",
-    "picture_note": "Гидравлическая реверс-редукторная передача"
+    "picture_note": "Гидравлическая реверс-редукторная передача",
+    "slides": [
+      {
+        "picture": "img/hero/rrp300-foto-12.webp",
+        "picture_small": "img/hero/rrp300-foto-12-640.webp",
+        "alt": "Реверс-редукторная передача РРП-300, фото"
+      },
+      {
+        "picture": "img/hero/rrp300-render.webp",
+        "picture_small": "img/hero/rrp300-render-640.webp",
+        "alt": "Реверс-редукторная передача РРП-300, трёхмерная модель"
+      }
+    ],
+    "slide_seconds": 6
   },
   "warranty": {
     "months": 12,

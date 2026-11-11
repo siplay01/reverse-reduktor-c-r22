@@ -152,3 +152,8 @@ body.static .c-ap { font-size: 14px; }
 @media (min-width: 801px) { .cfg-res { position: sticky; top: 96px; } }
 /* c-r20: NEW stamp in the corner when the card has a real drawing */
 .stamp.is-corner, .model-pic.is-stamp .stamp.is-corner { left: auto; top: 12px; right: 12px; transform: rotate(-9deg); font-size: clamp(28px, 3vw, 40px); }
+
+/* c-r21: hero crossfade between slides (all stacked; .on is visible); without JS only the first shows */
+.hero-pic.is-fade img { opacity: 0; }
+.hero-pic.is-fade img.on { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) { .hero-pic.is-fade img { transition: opacity 1.2s ease-in-out; } }

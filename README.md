@@ -1,4 +1,4 @@
-# Реверс-редуктор c-r20: portable static site + git-based admin (revision 20, own repo and URL; c-r19 stays as it was)
+# Реверс-редуктор c-r21: portable static site + git-based admin (revision 21, own repo and URL; c-r20 and c-r19 stay as they were)
 
 Revision 19 of the site (2026-11-04). Same look as `v6-demo/c-r18`, rebuilt so it can move between hosts (GitHub Pages, Russian shared hosting, .com, anything that serves files) and so every model, drawing and part has its own address for search engines.
 
@@ -19,7 +19,7 @@ node qa/owner-flow.mjs              # simulates the owner editing (photo, price 
 node qa/test.mjs                    # browser tests (Chromium + WebKit, 1360 and 390 px) + admin loads (needs internet for the CDN)
 ```
 
-Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r20` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
+Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r21` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
 
 ## Admin
 
@@ -62,3 +62,7 @@ Clickable callouts on the РРП-300 section drawing, the per-variant selector o
 - Services are a plain list plus call/write buttons (the rows used to link to the footer).
 - Constructor: the owner's fields live in `settings.json` → `constructor.groups`; each model only has `constructor.enabled` + `preset`. A choice that matches a РРП-300 variant row (hydraulic, 3Д6/3Д12, 1500 rpm, power and both ratios) shows «Серийное исполнение <designation+code>»; everything else shows «Под заказ».
 - Rollback: `git checkout before-c-r20`.
+
+## Revision 21 (2026-11-11)
+
+- Hero: crossfade carousel (`settings.json` → `hero.slides`, `hero.slide_seconds`, editable in the admin): owner photo No. 12 cut out on white and the Blender render (round 6). Without JS only the first picture shows; reduced motion = no rotation; hover/focus pauses.

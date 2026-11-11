@@ -1,4 +1,4 @@
-# Реверс-редуктор c-r21: portable static site + git-based admin (revision 21, own repo and URL; c-r20 and c-r19 stay as they were)
+# Реверс-редуктор c-r21: portable static site + git-based admin (revision 21, published to the working slot repo reverse-reduktor-c-r20; c-r19 is the approved version and stays as it is)
 
 Revision 19 of the site (2026-11-04). Same look as `v6-demo/c-r18`, rebuilt so it can move between hosts (GitHub Pages, Russian shared hosting, .com, anything that serves files) and so every model, drawing and part has its own address for search engines.
 

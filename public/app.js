@@ -85,7 +85,7 @@
     const imgs = $$("img", fade); let k = 0, hold = false;
     ["mouseenter", "focusin"].forEach((e) => fade.addEventListener(e, () => { hold = true; }));
     ["mouseleave", "focusout"].forEach((e) => fade.addEventListener(e, () => { hold = false; }));
-    setInterval(() => { if (hold || document.hidden) return; imgs[k].classList.remove("on"); k = (k + 1) % imgs.length; imgs[k].classList.add("on"); }, +fade.dataset.fade * 1000);
+    setInterval(() => { if (hold || document.hidden) return; imgs[k].classList.remove("on"); k = (k + 1) % imgs.length; imgs[k].classList.add("on"); const c = $("figcaption", fade); if (c) { c.firstChild.textContent = imgs[k].dataset.cap; c.lastChild.textContent = imgs[k].dataset.note; } }, +fade.dataset.fade * 1000);
   }
   renderConfig(); renderCart();
 })();

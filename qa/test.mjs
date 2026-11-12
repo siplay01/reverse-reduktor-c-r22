@@ -26,7 +26,7 @@ for (const [name, eng] of [["chromium", chromium], ["webkit", webkit]]) {
     const cart = await p.evaluate(() => JSON.parse(localStorage.getItem("rr-c19-cart")));
     assert.equal(cart.length, 1); assert.equal(cart[0].des, "РРП-300"); assert.ok(/150 л\.с\./.test(cart[0].name) && /1:2,61/.test(cart[0].name) && /СБ525-01-13-040/.test(cart[0].name), cart[0].name);
     assert.equal(await p.locator("#uslugi .sv8-list li a").count(), 0, "services rows are not links");
-    assert.equal(await p.locator(".hero-pic.is-fade img").count(), 2, "two hero slides"); assert.equal(await p.locator(".hero-pic img.on").count(), 1);
+    assert.equal(await p.locator(".hero-pic.is-fade img").count(), 3, "three hero slides"); assert.equal(await p.locator(".hero-pic img.on").count(), 1);
     await p.waitForFunction(() => document.querySelectorAll(".hero-pic img")[1].classList.contains("on"), null, { timeout: 9000 }); // crossfade moves on
     for (const id of ["rrp-300", "rrp-238", "rrp-3d6", "rrp-3d12", "mufta-ms", "novaya-razrabotka"]) assert.equal(await p.locator(`#model-${id} .mcard-pic img`).count(), 1, `picture on ${id}`);
     // 2. real addresses: card -> model page -> catalog -> node -> part, each its own URL

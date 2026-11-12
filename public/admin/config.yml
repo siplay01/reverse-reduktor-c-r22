@@ -3,14 +3,14 @@
 # Production: needs a GitHub OAuth proxy (see README.md); the host of the site itself does not matter.
 backend:
   name: github
-  repo: siplay01/reverse-reduktor-c-r21
+  repo: siplay01/reverse-reduktor-c-r22
   branch: main
 local_backend: true
 locale: ru
 media_folder: public/img/uploads
 public_folder: /img/uploads
-site_url: https://siplay01.github.io/reverse-reduktor-c-r21/
-display_url: https://siplay01.github.io/reverse-reduktor-c-r21/
+site_url: https://siplay01.github.io/reverse-reduktor-c-r22/
+display_url: https://siplay01.github.io/reverse-reduktor-c-r22/
 collections:
   - name: settings
     label: Настройки сайта
@@ -37,6 +37,11 @@ collections:
                   - { label: Картинка, name: picture, widget: image }
                   - { label: Картинка малая (необязательно), name: picture_small, widget: image, required: false }
                   - { label: Описание картинки (alt), name: alt, widget: string }
+                  - { label: Подпись, заголовок, name: caption, widget: string, required: false }
+                  - { label: Подпись, строка ниже, name: note, widget: string, required: false }
+                  - { label: Ширина, px, name: width, widget: number, value_type: int, required: false }
+                  - { label: Высота, px, name: height, widget: number, value_type: int, required: false }
+                  - { label: Заполнение, name: fit, widget: select, options: [contain, cover], required: false }
               - { label: Смена картинки, секунд, name: slide_seconds, widget: number, value_type: int, required: false }
               - { label: Подпись, name: picture_caption, widget: string }
               - { label: Пояснение к подписи, name: picture_note, widget: string }

@@ -33,20 +33,40 @@
     "eyebrow": "Инженерные решения для судового флота",
     "title": "Судовые реверс-редукторы. Производство, ремонт, запчасти.",
     "lead": "Реверс-редукторные передачи РРП-300, РРП-238, РРП-3Д6 и РРП-3Д12. Техническое сопровождение, ремонт и подбор запасных частей по заводской документации.",
-    "picture": "img/hero/rrp300-foto-12.webp",
-    "picture_small": "img/hero/rrp300-foto-12-640.webp",
+    "picture": "img/hero/h13.webp",
+    "picture_small": "img/hero/h13-640.webp",
     "picture_caption": "РРП-300",
     "picture_note": "Гидравлическая реверс-редукторная передача",
     "slides": [
       {
-        "picture": "img/hero/rrp300-foto-12.webp",
-        "picture_small": "img/hero/rrp300-foto-12-640.webp",
-        "alt": "Реверс-редукторная передача РРП-300, фото"
+        "picture": "img/hero/h13.webp",
+        "picture_small": "img/hero/h13-640.webp",
+        "width": 1400,
+        "height": 1284,
+        "fit": "contain",
+        "alt": "Реверс-редукторная передача РРП-300, фото",
+        "caption": "РРП-300",
+        "note": "Гидравлическая реверс-редукторная передача"
       },
       {
-        "picture": "img/hero/rrp300-render.webp",
-        "picture_small": "img/hero/rrp300-render-640.webp",
-        "alt": "Реверс-редукторная передача РРП-300, трёхмерная модель"
+        "picture": "img/hero/hdraw.webp",
+        "picture_small": "img/hero/hdraw-640.webp",
+        "width": 1400,
+        "height": 1284,
+        "fit": "contain",
+        "alt": "РРП-300, вид с выходного торца, чертёж из руководства по эксплуатации",
+        "caption": "РРП-300",
+        "note": "Вид с выходного торца, руководство РР-300.РЭ"
+      },
+      {
+        "picture": "img/hero/hceh.webp",
+        "picture_small": "img/hero/hceh-640.webp",
+        "width": 1600,
+        "height": 1200,
+        "fit": "cover",
+        "alt": "Два гидравлических реверс-редуктора на поддонах в цехе",
+        "caption": "Реверс-редукторы",
+        "note": "Гидравлические реверс-редукторные передачи"
       }
     ],
     "slide_seconds": 6

@@ -163,6 +163,5 @@ body.static .c-ap { font-size: 14px; }
 .node.is-zoomed .node-fig img { width: 100%; height: auto; }
 .node.is-zoomed .zoom { cursor: zoom-out; }
 @media (max-width: 1100px) { .node.is-zoomed .node-fig .sheet { display: block; overflow: auto; } .node.is-zoomed .node-fig img { width: 200%; max-width: none; } }
-/* c-r23: "Российский производитель" mark in the hero lead, with a small tricolour */
+/* c-r23: "Российский производитель" mark in the hero lead */
 .hero-made { color: #fff; font-weight: 700; white-space: nowrap; }
-.hero-made::before { content: ""; display: inline-block; width: 21px; height: 14px; margin-right: 8px; vertical-align: -2px; border-radius: 2px; background: linear-gradient(#fff 0 33.4%, #0039a6 0 66.7%, #d52b1e 0); box-shadow: 0 0 0 1px #ffffff40; }

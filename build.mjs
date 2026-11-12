@@ -46,7 +46,7 @@ const header = (section) => `<header class="head"><div class="wrap head-in">
     <details class="burger"><summary aria-label="Меню"><span></span></summary><nav aria-label="Разделы, мобильное меню">${NAV.map(([, h, t]) => `<a href="${u(h)}">${t}</a>`).join("")}<a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></nav></details>
   </div></header>`;
 const footer = `<footer class="foot foot-r2" id="kontakty"><div class="wrap"><div class="foot-grid">
-  <div class="foot-contact"><p class="foot-name">${esc(C.brand)}</p><p>Судовое оборудование · ${esc(C.operator)}</p><p class="foot-phone"><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></p><p><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></p><p>${esc(C.address)}</p><p><a href="${u("/kontakty/")}">Как нас найти</a></p></div>
+  <div class="foot-contact"><p class="foot-name">${esc(C.brand)}</p><p>Судовое оборудование · ${esc(C.operator)}</p><p class="foot-phone"><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></p>${C.phone2 ? `<p class="foot-phone"><a href="tel:${esc(C.tel2)}">${esc(C.phone2)}</a></p>` : ""}<p><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></p><p>${esc(C.address)}</p><p><a href="${u("/kontakty/")}">Как нас найти</a></p></div>
   <nav aria-label="Разделы, подвал"><p class="foot-h">Разделы</p>${NAV.map(([, h, t]) => `<a href="${u(h)}">${t}</a>`).join("")}</nav>
   <nav aria-label="Запасные части, подвал"><p class="foot-h">Запасные части</p>${withCat.map((m) => `<a href="${u(`/katalog/${m.slug}/`)}">${esc(m.name)}</a>`).join("")}<a href="${u("/katalog/vse/")}">Все запчасти</a></nav>
   <div class="foot-req"><p class="foot-h">Реквизиты</p><dl class="req" id="req">${[["Организация", C.operator], ["ИНН / КПП", `${C.inn} / ${C.kpp}`], ["ОГРН", C.ogrn], ["Банк", C.bank], ["БИК", C.bik], ["Р/с", C.rs], ["К/с", C.ks]].map(([a, b]) => `<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl><button type="button" class="linkish" data-copy-req>Скопировать реквизиты</button></div>
@@ -77,8 +77,8 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script
 const head1 = (title, aside = "", sub = "", art = "") => `<header class="cat-head compact${art ? " " + art : ""}"><div><h1 tabindex="-1">${title}</h1>${sub ? `<p class="muted">${sub}</p>` : ""}</div>${aside}</header>`;
 const buy = (des, name, where) => `<span class="buy"><label class="sr" for="q-${esc(des)}-${esc(where.length)}">Количество, ${esc(des)}</label><input id="q-${esc(des)}-${esc(where.length)}" type="number" min="1" value="1" inputmode="numeric" data-qty><button type="button" class="btn-add" data-add="${esc(des)}" data-name="${esc(name)}" data-where="${esc(where)}">В запрос</button></span>`;
 const partLink = (des) => { const p = partBy.get(norm(des)); return p ? `<a href="${u(`/detal/${p.slug}/`)}">${sku(des)}</a>` : sku(des); };
-const orgLd = { "@context": "https://schema.org", "@type": "Organization", name: C.operator, url: abs("/"), telephone: C.phone, email: C.email, taxID: C.inn,
-  address: { "@type": "PostalAddress", streetAddress: "ул. Зоотехническая, 24Г, р.п. Южный", addressLocality: "Барнаул", addressRegion: "Алтайский край", postalCode: "656609", addressCountry: "RU" } };
+const orgLd = { "@context": "https://schema.org", "@type": "Organization", name: C.operator, url: abs("/"), telephone: C.phone2 ? [C.phone, C.phone2] : C.phone, email: C.email, taxID: C.inn,
+  address: { "@type": "PostalAddress", streetAddress: "ул. Зоотехническая, 24Ж, р.п. Южный", addressLocality: "Барнаул", addressRegion: "Алтайский край", postalCode: "656609", addressCountry: "RU" } };
 
 // ---------- cards ----------
 const modelCard = (m) => {
@@ -120,7 +120,7 @@ const cfgBlock = (m) => !S.constructor ? "" : `<div class="cfg" data-config data
     <a class="sv8-docs" href="${u("/dokumenty/")}"><span class="sv8-dt">Техническая документация <svg viewBox="0 0 24 12" aria-hidden="true"><path d="M0 6h22M17 1l5 5-5 5"/></svg></span><span class="sv8-ds">Каталоги, руководства и чертежи</span></a></div></div></section>
   <section class="sec" id="svidetelstvo" aria-labelledby="cert-h"><div class="wrap"><div class="cert"><div class="cert-scan"><a href="${u("/" + S.cert.scan_large)}" target="_blank" rel="noopener"><img src="${u("/" + S.cert.scan)}" width="600" height="851" alt="Скан свидетельства о признании РКО № ${esc(S.cert.no)}" loading="lazy"></a></div>
     <div class="cert-body"><p class="cert-kicker">Российское Классификационное Общество</p><h2 id="cert-h">Свидетельство о признании № ${esc(S.cert.no)}</h2>
-    <dl class="cert-kv"><div><dt>Признано за</dt><dd>${esc(C.operator)} (ИНН ${esc(C.inn)}), г. Барнаул</dd></div><div><dt>Вступает в силу</dt><dd>${esc(S.cert.from)}</dd></div><div><dt>Действует до</dt><dd>${esc(S.cert.to)}</dd></div><div><dt>Выдано</dt><dd>${esc(S.cert.issuer)}</dd></div></dl>
+    <dl class="cert-kv"><div><dt>Признано за</dt><dd>${esc(C.operator)} (ИНН ${esc(C.inn)}), г. Барнаул</dd></div><div><dt>Действует до</dt><dd>${esc(S.cert.to)}</dd></div><div><dt>Выдано</dt><dd>${esc(S.cert.issuer)}</dd></div></dl>
     <p class="cert-h3">Виды работ, выполняемых в соответствии с Правилами РКО:</p><ul class="cert-list">${[].concat(S.cert.scope).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
     <a class="btn btn-pale" href="${u("/" + S.cert.pdf)}" target="_blank" rel="noopener">Открыть PDF свидетельства</a></div></div></div></section>`;
   page({ url: "/", title: "Реверс-редуктор · ООО «Дело» · судовые реверс-редукторы", description: S.seo.default_description, section: "", body, ld: [orgLd] });
@@ -202,7 +202,7 @@ page({ url: "/dokumenty/katalog-rrp-300/", title: "Каталог деталей
   const body = `<div class="wrap cat find-page">${crumbs([["Как нас найти"]])}${head1("Как нас найти", "", `${esc(C.operator)}, ${esc(C.address)}`)}
     <section class="find-top" aria-label="Адрес">
       <div class="find-card"><p class="find-k">Адрес</p><p class="find-addr">${esc(C.address)}</p>
-        <dl class="find-kv"><div><dt>Телефон</dt><dd><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></dd></div><div><dt>E-mail</dt><dd><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></dd></div>${K.hours ? `<div><dt>Часы работы</dt><dd>${esc(K.hours)}</dd></div>` : ""}</dl>${K.directions ? `<p class="find-dir"><b>Как добраться.</b> ${esc(K.directions).replace(/\n/g, "<br>")}</p>` : ""}</div>
+        <dl class="find-kv"><div><dt>Телефон</dt><dd><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a>${C.phone2 ? `<br><a href="tel:${esc(C.tel2)}">${esc(C.phone2)}</a>` : ""}</dd></div><div><dt>E-mail</dt><dd><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></dd></div>${K.hours ? `<div><dt>Часы работы</dt><dd>${esc(K.hours)}</dd></div>` : ""}</dl>${K.directions ? `<p class="find-dir"><b>Как добраться.</b> ${esc(K.directions).replace(/\n/g, "<br>")}</p>` : ""}</div>
     </section>
     <figure class="find-fig"><img src="${u("/img/map-district.webp")}" width="1400" height="860" alt="Обзорная карта: ООО «Дело» в районе Южный, подсвечены Южный тракт и Змеиногорский тракт, на севере центр Барнаула"><figcaption>Карта: © участники <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>.</figcaption></figure>
   </div>`;

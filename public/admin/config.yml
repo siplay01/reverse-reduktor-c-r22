@@ -106,6 +106,8 @@ collections:
               - { label: КПП, name: kpp, widget: string }
               - { label: ОГРН, name: ogrn, widget: string }
               - { label: Телефон для показа, name: phone, widget: string }
+              - { label: Второй телефон для показа (необязательно), name: phone2, widget: string, required: false }
+              - { label: Второй телефон для ссылки tel (только цифры с +7), name: tel2, widget: string, required: false }
               - { label: Телефон для ссылки (tel), name: tel, widget: string }
               - { label: E-mail, name: email, widget: string }
               - { label: Адрес, name: address, widget: string }

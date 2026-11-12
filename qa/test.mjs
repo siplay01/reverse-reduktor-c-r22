@@ -45,6 +45,7 @@ for (const [name, eng] of [["chromium", chromium], ["webkit", webkit]]) {
     assert.equal(await p.locator(".find-fig").count(), 1); assert.equal(await p.locator("iframe, a[href*='yandex']").count(), 0, "no Yandex");
     assert.match(await p.locator(".find-addr").innerText(), /Зоотехническая, 24Ж$/);
     assert.equal(await p.locator('.find-kv a[href="tel:+73852668419"], footer a[href="tel:+73852668419"]').count(), 2, "second phone on contacts and in footer");
+    assert.equal(await p.locator(".strip-r a[href^='tel:']").count(), 2, "both phones in the header strip");
     assert.ok((await p.locator("header.head nav a", { hasText: "Контакты" }).count()) >= 1 || w < 1300, "nav item");
     // 2c. catalog drawing zooms in place and shrinks back, no navigation
     await p.goto(U("/katalog/rrp-300/ris-3/")); await p.click(".node a.zoom");

@@ -48,21 +48,16 @@ body.static .c-ap { font-size: 14px; }
 .newband .btn:hover { background: #f3d9dd; }
 
 /* contacts page */
-.find-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; margin: 24px 0; }
+.find-top { display: grid; grid-template-columns: minmax(0, 640px); gap: 24px; margin: 24px 0; }
 .find-card { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent); padding: 24px; min-width: 0; }
 .find-k { margin: 0 0 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); }
 .find-addr { margin: 0 0 16px; font-size: 22px; line-height: 1.3; font-weight: 700; }
 .find-kv { margin: 0; } .find-kv > div { display: flex; gap: 16px; padding: 8px 0; border-top: 1px solid var(--line); } .find-kv dt { min-width: 100px; color: var(--sub); } .find-kv dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
-.find-btns { display: grid; gap: 8px; margin: 0 0 16px; } .find-btns .btn { justify-content: center; text-align: center; }
-.find-lm { margin: 0; padding-left: 20px; } .find-lm li { margin: 4px 0; } .find-dir { margin: 16px 0 0; }
+.find-dir { margin: 16px 0 0; }
 .find-fig { margin: 0 0 24px; background: #fff; border: 1px solid var(--line); }
 .find-fig img { display: block; width: 100%; height: auto; }
 .find-fig figcaption { padding: 12px 16px; font-size: 14px; color: var(--sub); }
-.find-live { margin: 0 0 48px; border: 1px solid var(--line); background: #fff; }
-.find-live summary { cursor: pointer; padding: 16px 20px; font-weight: 650; min-height: 44px; }
-.find-facade { padding: 8px 20px 24px; text-align: center; }
-.find-frame { width: 100%; height: 480px; border: 0; display: block; }
-@media (max-width: 800px) { .find-top { grid-template-columns: 1fr; } .find-card { padding: 16px; } .find-addr { font-size: 19px; } .find-kv > div { flex-direction: column; gap: 2px; } .find-frame { height: 360px; } }
+@media (max-width: 800px) { .find-top { grid-template-columns: 1fr; } .find-card { padding: 16px; } .find-addr { font-size: 19px; } .find-kv > div { flex-direction: column; gap: 2px; } }
 
 @media (min-width: 1301px) { .nav { gap: 18px; } .nav a { font-size: 15.5px; } .head-in { gap: 20px; } }
 @media (max-width: 1300px) { .nav { display: none; } .burger { display: block; } .head-in { gap: 12px; } }
@@ -70,7 +65,6 @@ body.static .c-ap { font-size: 14px; }
 /* 320 px: long e-mail button on the model page, catalog cards */
 .model-info .mcard-btns .btn { white-space: normal; max-width: 100%; overflow-wrap: anywhere; text-align: center; }
 @media (max-width: 400px) { .mcard-sm { grid-template-columns: 1fr; } .mcard-sm .mcard-pic { min-height: 140px; } }
-.find-btns .btn { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
 
 /* big red NEW instead of a picture on the new-product card */
 .mcard-pic.is-newbig { display: grid; place-items: center; background: #b3122a; min-height: 220px; text-decoration: none; }
@@ -114,7 +108,7 @@ body.static .c-ap { font-size: 14px; }
 .part-buy a[href^="tel"] { white-space: nowrap; }
 /* one rounding rule: controls 6 px, containers 12 px */
 .cfg-o span { border-radius: 6px; }
-.cfg-res, .term, .part-buy, .part-kv, .find-card, .find-fig, .find-live, .tile, .model-pic, .scans img, .ar-list, .cert { border-radius: 12px; }
+.cfg-res, .term, .part-buy, .part-kv, .find-card, .find-fig, .tile, .model-pic, .scans img, .ar-list, .cert { border-radius: 12px; }
 .model-pic, .find-fig, .ar-list { overflow: hidden; }
 .tile img, .scans img { border-radius: 8px; }
 /* readable eyebrow on white */
@@ -156,10 +150,19 @@ body.static .c-ap { font-size: 14px; }
 /* c-r21: hero crossfade between slides (all stacked; .on is visible); without JS only the first shows */
 .hero-pic.is-fade img { opacity: 0; }
 .hero-pic.is-fade img.on { opacity: 1; }
-@media (prefers-reduced-motion: no-preference) { .hero-pic.is-fade img { transition: opacity 1.2s ease-in-out; } }
+@media (prefers-reduced-motion: no-preference) { .hero-pic.is-fade img { transition: opacity 2.5s ease-in-out; } }
 /* c-r22: hero slides fill the whole picture area; drawing and cutout photo sit edge to edge on white, the shop photo covers */
 .hero-pic.is-art img { padding: 0; }
 .hero-pic img.fit-cover { object-fit: cover; }
 .hero-pic img.fit-contain { object-fit: contain; }
 @media (max-width: 800px) { .hero-pic.is-art img { padding: 0; } .hero-pic { min-height: 0; aspect-ratio: 1.09; } }
 @media (max-width: 800px) { .hero-pic figcaption { padding: 6px 10px; } .hero-pic figcaption span { display: none; } }
+/* c-r23: catalog drawing zooms in place */
+.node.is-zoomed > * { grid-column: 1 / -1; }
+.node.is-zoomed .node-fig { position: static; max-width: none; }
+.node.is-zoomed .node-fig img { width: 100%; height: auto; }
+.node.is-zoomed .zoom { cursor: zoom-out; }
+@media (max-width: 1100px) { .node.is-zoomed .node-fig .sheet { display: block; overflow: auto; } .node.is-zoomed .node-fig img { width: 200%; max-width: none; } }
+/* c-r23: "Российский производитель" mark in the hero lead, with a small tricolour */
+.hero-made { color: #fff; font-weight: 700; white-space: nowrap; }
+.hero-made::before { content: ""; display: inline-block; width: 21px; height: 14px; margin-right: 8px; vertical-align: -2px; border-radius: 2px; background: linear-gradient(#fff 0 33.4%, #0039a6 0 66.7%, #d52b1e 0); box-shadow: 0 0 0 1px #ffffff40; }

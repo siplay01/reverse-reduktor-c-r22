@@ -45,7 +45,8 @@
   }
   document.addEventListener("click", (e) => {
     const t = e.target;
-    const ml = t.closest("[data-map-load]"); if (ml) { const m = ml.closest("[data-map]"); m.querySelector(".find-facade").innerHTML = `<iframe class="find-frame" src="${m.dataset.src}" title="Карта проезда, Яндекс.Карты" loading="lazy" allowfullscreen></iframe>`; }
+    // catalog drawing: zoom in place (full width above the parts list), second click shrinks it back; the link stays as the no-JS fallback
+    const z = t.closest(".node a.zoom"); if (z) { e.preventDefault(); const on = z.closest(".node").classList.toggle("is-zoomed"); z.setAttribute("aria-expanded", on); $("img", z).sizes = on ? "100vw" : "(min-width: 1000px) 34vw, 100vw"; z.scrollIntoView({ block: "start" }); return; }
     if (t.closest("[data-cfg-add]")) add(modelName(), cfgLine(), "Конструктор", 1);
     const a = t.closest("[data-add]"); if (a) add(a.dataset.add, a.dataset.name, a.dataset.where, Math.max(1, parseInt(a.parentElement.querySelector("[data-qty]")?.value, 10) || 1));
     if (t.closest("[data-cart-open]")) { renderCart(); $("#cart").showModal(); }

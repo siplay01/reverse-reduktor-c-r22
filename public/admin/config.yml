@@ -3,14 +3,14 @@
 # Production: needs a GitHub OAuth proxy (see README.md); the host of the site itself does not matter.
 backend:
   name: github
-  repo: siplay01/reverse-reduktor-c-r22
+  repo: siplay01/reverse-reduktor-c-r23
   branch: main
 local_backend: true
 locale: ru
 media_folder: public/img/uploads
 public_folder: /img/uploads
-site_url: https://siplay01.github.io/reverse-reduktor-c-r22/
-display_url: https://siplay01.github.io/reverse-reduktor-c-r22/
+site_url: https://siplay01.github.io/reverse-reduktor-c-r23/
+display_url: https://siplay01.github.io/reverse-reduktor-c-r23/
 collections:
   - name: settings
     label: Настройки сайта
@@ -27,6 +27,7 @@ collections:
               - { label: Надпись над заголовком, name: eyebrow, widget: string }
               - { label: Заголовок, name: title, widget: string }
               - { label: Подзаголовок, name: lead, widget: text }
+              - { label: Выделить в начале подзаголовка (например «Российский производитель»), name: lead_mark, widget: string, required: false }
               - { label: Рисунок на первом экране, name: picture, widget: image }
               - { label: Рисунок на первом экране (малый, необязательно), name: picture_small, widget: image, required: false }
               - label: Картинки карусели (сменяются по очереди; если пусто, показывается рисунок выше)
@@ -93,7 +94,6 @@ collections:
               - { label: Долгота, name: lon, widget: number, value_type: float }
               - { label: Масштаб карты (1-19), name: zoom, widget: number, value_type: int, min: 1, max: 19 }
               - { label: Часы работы, name: hours, widget: string, required: false }
-              - { label: Ориентиры (список строк рядом с картой), name: landmarks, widget: list, required: false, field: { label: Строка, name: item, widget: string } }
               - { label: Как добраться (текст схемы проезда), name: directions, widget: text, required: false }
           - label: Организация и контакты
             name: company

@@ -26,7 +26,7 @@ for (const [name, eng] of [["chromium", chromium], ["webkit", webkit]]) {
     const cart = await p.evaluate(() => JSON.parse(localStorage.getItem("rr-c19-cart")));
     assert.equal(cart.length, 1); assert.equal(cart[0].des, "РРП-300"); assert.ok(/150 л\.с\./.test(cart[0].name) && /1:2,61/.test(cart[0].name) && /СБ525-01-13-040/.test(cart[0].name), cart[0].name);
     assert.equal(await p.locator("#uslugi .sv8-list li a").count(), 0, "services rows are not links");
-    assert.equal(await p.locator(".hero-pic.is-fade img").count(), 3, "three hero slides"); assert.equal(await p.locator(".hero-pic img.on").count(), 1);
+    assert.equal(await p.locator(".hero-pic.is-fade img").count(), 2, "two hero slides"); assert.equal(await p.locator(".hero-pic img.on").count(), 1);
     await p.waitForFunction(() => document.querySelectorAll(".hero-pic img")[1].classList.contains("on"), null, { timeout: 9000 }); // crossfade moves on
     for (const id of ["rrp-300", "rrp-238", "rrp-3d6", "rrp-3d12", "mufta-ms", "novaya-razrabotka"]) assert.equal(await p.locator(`#model-${id} .mcard-pic img`).count(), 1, `picture on ${id}`);
     // 2. real addresses: card -> model page -> catalog -> node -> part, each its own URL
@@ -39,13 +39,16 @@ for (const [name, eng] of [["chromium", chromium], ["webkit", webkit]]) {
     await p.goto(U("/detal/525-16-113/")); await p.click(".part-buy [data-add]");
     assert.equal(await p.locator("[data-cart-count]").first().innerText(), "2");
     await p.click("[data-cart-open]"); assert.equal(await p.locator("#cart-items li").count(), 2); await p.click("[data-cart-close]");
-    // 2b. contacts: both annotated maps are real images, Yandex loads only after opening the block and a click
+    // 2b. contacts: one own district map, no Yandex links or frames, corrected address
     await p.goto(U("/kontakty/")); await p.waitForSelector(".find-fig img");
-    await p.waitForFunction(() => [...document.querySelectorAll(".find-fig img")].every((i) => (i.loading === "lazy" ? true : i.complete && i.naturalWidth > 0)));
-    assert.equal(await p.locator(".find-fig").count(), 2); assert.equal(await p.locator("iframe").count(), 0, "no third-party frame before click");
-    const route = await p.locator('a:has-text("Построить маршрут")').getAttribute("href"); assert.match(route, /rtext=~53\.2563675%2C83\.7063668/);
-    await p.locator(".find-live summary").click(); await p.click("[data-map-load]"); const src = await p.locator("iframe.find-frame").getAttribute("src"); assert.match(src, /^https:\/\/yandex\.ru\/map-widget\/v1\/\?ll=83\.7063668%2C53\.2563675/);
+    await p.waitForFunction(() => [...document.querySelectorAll(".find-fig img")].every((i) => i.complete && i.naturalWidth > 0));
+    assert.equal(await p.locator(".find-fig").count(), 1); assert.equal(await p.locator("iframe, a[href*='yandex']").count(), 0, "no Yandex");
+    assert.match(await p.locator(".find-addr").innerText(), /Зоотехническая, 24Г$/);
     assert.ok((await p.locator("header.head nav a", { hasText: "Контакты" }).count()) >= 1 || w < 1300, "nav item");
+    // 2c. catalog drawing zooms in place and shrinks back, no navigation
+    await p.goto(U("/katalog/rrp-300/ris-3/")); await p.click(".node a.zoom");
+    assert.equal(await p.locator(".node.is-zoomed").count(), 1); assert.ok(p.url().endsWith("/ris-3/"), "stays on the page");
+    await p.click(".node a.zoom"); assert.equal(await p.locator(".node.is-zoomed").count(), 0);
     // 3. catalog list filter from ?q
     await p.goto(U("/katalog/vse/?q=525-16-113")); await p.waitForSelector("table.spec");
     assert.equal(await p.locator("table.spec tbody tr:not([hidden])").count(), 1);

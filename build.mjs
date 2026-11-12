@@ -78,7 +78,7 @@ const head1 = (title, aside = "", sub = "", art = "") => `<header class="cat-hea
 const buy = (des, name, where) => `<span class="buy"><label class="sr" for="q-${esc(des)}-${esc(where.length)}">Количество, ${esc(des)}</label><input id="q-${esc(des)}-${esc(where.length)}" type="number" min="1" value="1" inputmode="numeric" data-qty><button type="button" class="btn-add" data-add="${esc(des)}" data-name="${esc(name)}" data-where="${esc(where)}">В запрос</button></span>`;
 const partLink = (des) => { const p = partBy.get(norm(des)); return p ? `<a href="${u(`/detal/${p.slug}/`)}">${sku(des)}</a>` : sku(des); };
 const orgLd = { "@context": "https://schema.org", "@type": "Organization", name: C.operator, url: abs("/"), telephone: C.phone, email: C.email, taxID: C.inn,
-  address: { "@type": "PostalAddress", streetAddress: "ул. Зоотехническая, 24, р.п. Южный", addressLocality: "Барнаул", addressRegion: "Алтайский край", postalCode: "656609", addressCountry: "RU" } };
+  address: { "@type": "PostalAddress", streetAddress: "ул. Зоотехническая, 24Г, р.п. Южный", addressLocality: "Барнаул", addressRegion: "Алтайский край", postalCode: "656609", addressCountry: "RU" } };
 
 // ---------- cards ----------
 const modelCard = (m) => {
@@ -102,7 +102,7 @@ const cfgBlock = (m) => !S.constructor ? "" : `<div class="cfg" data-config data
 {
   const h = S.hero;
   const heroSlides = h.slides?.length ? h.slides : [{ picture: h.picture, picture_small: h.picture_small, alt: "Реверс-редукторная передача РРП-300" }];
-  const body = `<section class="hero"><div class="hero-txt"><p class="eyebrow">${esc(h.eyebrow)}</p><h1>${esc(h.title)}</h1><p class="hero-lead">${esc(h.lead)}</p>
+  const body = `<section class="hero"><div class="hero-txt"><p class="eyebrow">${esc(h.eyebrow)}</p><h1>${esc(h.title)}</h1><p class="hero-lead">${h.lead_mark && h.lead.startsWith(h.lead_mark) ? `<strong class="hero-made">${esc(h.lead_mark)}</strong>${esc(h.lead.slice(h.lead_mark.length))}` : esc(h.lead)}</p>
     <p class="hero-btns"><a class="btn btn-white" href="${u("/katalog/")}">Найти запчасть <span aria-hidden="true">→</span></a><a class="btn btn-line" href="#produkciya">Посмотреть оборудование</a></p></div>
     <figure class="hero-pic is-art${heroSlides.length > 1 ? " is-fade" : ""}"${heroSlides.length > 1 ? ` data-fade="${Math.max(3, +h.slide_seconds || 6)}"` : ""}>${heroSlides.map((sl, i) => `<img class="${i ? "" : "on "}fit-${sl.fit === "cover" ? "cover" : "contain"}" src="${u("/" + rel(sl.picture_small || sl.picture))}" srcset="${u("/" + rel(sl.picture_small || sl.picture))} 640w, ${u("/" + rel(sl.picture))} ${sl.width || 1600}w" sizes="(min-width: 900px) 50vw, 100vw" width="${sl.width || 1600}" height="${sl.height || 1200}" alt="${esc(sl.alt)}" data-cap="${esc(sl.caption || h.picture_caption)}" data-note="${esc(sl.note || h.picture_note)}"${i ? ' decoding="async"' : ' fetchpriority="high"'}>`).join("")}<figcaption><b>${esc(heroSlides[0].caption || h.picture_caption)}</b><span>${esc(heroSlides[0].note || h.picture_note)}</span></figcaption></figure></section>
   ${S.new_product?.enabled ? `<section class="newband" aria-labelledby="new-h"><div class="wrap newband-in"><p class="newband-label" aria-hidden="true">${esc(S.new_product.label)}</p>
@@ -167,7 +167,7 @@ for (const m of withCat) {
     const pn = `<nav class="pn" aria-label="Соседние узлы">${prev ? `<a href="${u(`/katalog/${m.slug}/ris-${prev.fig}/`)}">← Рис. ${prev.fig}</a>` : ""}${next ? `<a href="${u(`/katalog/${m.slug}/ris-${next.fig}/`)}">Рис. ${next.fig} →</a>` : ""}</nav>`;
     page({ url: `/katalog/${m.slug}/ris-${n.fig}/`, title: `Рис. ${n.fig}. ${n.title}: ${m.cname}`, description: `${n.title}, рис. ${n.fig} каталога деталей ${m.cname}: ${plur(n.rows.length, "позиция", "позиции", "позиций")} с обозначениями и количеством по исполнениям.`, section: "katalog",
       body: `<div class="wrap cat">${crumbs([["Запасные части", "/katalog/"], [m.cname, `/katalog/${m.slug}/`], [`Рис. ${n.fig}`]])}${head1(`<span class="h-fig">Рис. ${n.fig}</span> ${esc(n.title)}`, pn)}
-      <div class="node${n.image ? "" : " node-noimg"}">${!n.image ? "" : `<figure class="node-fig"><a class="sheet zoom" href="${u("/" + n.image_large)}" target="_blank" rel="noopener"><img src="${u("/" + n.image)}" srcset="${u("/" + n.image)} 900w, ${u("/" + n.image_large)} 2000w" sizes="(min-width: 1000px) 34vw, 100vw" width="${n.width}" height="${n.height}" alt="Рис. ${n.fig}. ${esc(n.title)}"></a></figure>`}
+      <div class="node${n.image ? "" : " node-noimg"}">${!n.image ? "" : `<figure class="node-fig"><a class="sheet zoom" href="${u("/" + n.image_large)}" aria-expanded="false" title="Нажмите, чтобы увеличить или уменьшить"><img src="${u("/" + n.image)}" srcset="${u("/" + n.image)} 900w, ${u("/" + n.image_large)} 2000w" sizes="(min-width: 1000px) 34vw, 100vw" width="${n.width}" height="${n.height}" alt="Рис. ${n.fig}. ${esc(n.title)}"></a></figure>`}
       <section class="node-spec" aria-label="Перечень деталей"><div class="tools"><label class="tool-f"><span class="sr">Фильтр по перечню</span><input type="search" placeholder="Фильтр по перечню" data-filter autocomplete="off"></label></div>
       ${vars ? `<div class="var-pick"><label for="vsel">Исполнение</label><select id="vsel" data-variant>${n.variants.map((c, i) => `<option value="${i}">${esc(c === "-" ? "основное" : c)}${m.slug === "rrp-300" && c !== "-" ? " (" + esc(m.designation + c) + ")" : ""}</option>`).join("")}</select><span class="muted small">Покажем количество в выбранном исполнении</span></div>` : ""}<div class="tbl"><table class="spec cmp"${vars ? " data-vtable" : ""}><thead><tr><th scope="col" class="c-pos">Поз.</th><th scope="col">Обозначение</th><th scope="col">Наименование</th>${n.variants.map((c, vi) => `<th scope="col" class="c-q" data-v="${vi}" title="${m.slug === "rrp-300" ? esc(m.designation + (c === "-" ? "" : c)) : esc(c)}">${esc(c === "-" ? "основное" : c)}</th>`).join("")}<th scope="col" class="c-buy">Количество</th></tr></thead><tbody>${rows}</tbody></table><p class="none" hidden>В этом узле такой позиции нет.</p></div>
       <ul class="foot-notes">${foot}<li>${vars ? "Количество в изделии по исполнениям; «—»: деталь не входит в исполнение. " : ""}Позиции без числа: деталь не входит.</li></ul></section></div></div>`, ld: [crumbLd([["Запасные части", "/katalog/"], [m.cname, `/katalog/${m.slug}/`], [`Рис. ${n.fig}`]])] });
@@ -196,26 +196,17 @@ page({ url: "/dokumenty/", title: "Техническая документаци
 page({ url: "/dokumenty/katalog-rrp-300/", title: "Каталог деталей РРП-300: сканы страниц", description: `Сканы ${SCANS.length} страниц каталога деталей реверс-редукторной передачи РРП-300.`, section: "dokumenty",
   body: `<div class="wrap cat">${crumbs([["Техническая документация", "/dokumenty/"], ["Каталог деталей РРП-300"]])}${head1("Каталог деталей РРП-300: сканы страниц", "", `${SCANS.length} страниц. Нажмите страницу, чтобы открыть её в полном размере.`)}<ul class="scans">${SCANS.map((s) => `<li><a href="${u("/" + s.full)}" target="_blank" rel="noopener"><img src="${u("/" + s.thumb)}" width="420" height="305" alt="Страница ${s.n}: ${esc(s.title)}" loading="lazy"><span>${s.n}. ${esc(s.title)}</span></a></li>`).join("")}</ul></div>`, ld: [] });
 
-// ---------- contacts: how to find us (own annotated maps, always visible; Yandex only as links and an optional frame) ----------
+// ---------- contacts: how to find us (address + one own district map, no third-party code) ----------
 {
-  const K = S.contacts, ll = `${K.lon}%2C${K.lat}`;
-  const widget = `https://yandex.ru/map-widget/v1/?ll=${ll}&z=${K.zoom}&pt=${ll}%2Cpm2rdm`;
-  const open = `https://yandex.ru/maps/?ll=${ll}&z=${K.zoom}&pt=${ll}`, route = `https://yandex.ru/maps/?rtext=~${K.lat}%2C${K.lon}&rtt=auto`;
-  const fig = (src, n, title, alt, lazy) => `<figure class="find-fig"><a href="${u(src)}" target="_blank" rel="noopener"><img src="${u(src)}" width="1400" height="860" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ""}></a><figcaption><b>${n}. ${esc(title)}</b> Карта: © участники <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>. Нажмите, чтобы открыть крупнее.</figcaption></figure>`;
+  const K = S.contacts;
   const body = `<div class="wrap cat find-page">${crumbs([["Как нас найти"]])}${head1("Как нас найти", "", `${esc(C.operator)}, ${esc(C.address)}`)}
-    <section class="find-top" aria-label="Адрес и маршрут">
+    <section class="find-top" aria-label="Адрес">
       <div class="find-card"><p class="find-k">Адрес</p><p class="find-addr">${esc(C.address)}</p>
-        <dl class="find-kv"><div><dt>Телефон</dt><dd><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></dd></div><div><dt>E-mail</dt><dd><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></dd></div>${K.hours ? `<div><dt>Часы работы</dt><dd>${esc(K.hours)}</dd></div>` : ""}</dl></div>
-      <div class="find-card"><p class="find-k">Маршрут</p>
-        <p class="find-btns"><a class="btn btn-white" href="${route}" target="_blank" rel="noopener">Построить маршрут в Яндекс.Картах</a><a class="btn btn-line" href="${open}" target="_blank" rel="noopener">Открыть на Яндекс.Картах</a></p>
-        <ul class="find-lm">${K.landmarks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>${K.directions ? `<p class="find-dir"><b>Как добраться.</b> ${esc(K.directions).replace(/\n/g, "<br>")}</p>` : ""}</div>
+        <dl class="find-kv"><div><dt>Телефон</dt><dd><a href="tel:${esc(C.tel)}">${esc(C.phone)}</a></dd></div><div><dt>E-mail</dt><dd><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></dd></div>${K.hours ? `<div><dt>Часы работы</dt><dd>${esc(K.hours)}</dd></div>` : ""}</dl>${K.directions ? `<p class="find-dir"><b>Как добраться.</b> ${esc(K.directions).replace(/\n/g, "<br>")}</p>` : ""}</div>
     </section>
-    ${fig("/img/map-close.webp", 1, "Участок и ближайшие улицы.", "Крупный план: здание ООО «Дело» (ул. Зоотехническая, 24) отмечено красным, подсвечены ул. Зоотехническая и ул. Герцена", false)}
-    ${fig("/img/map-district.webp", 2, "Район и основные дороги.", "Обзорная карта: расположение ООО «Дело» в районе Южный, подсвечены Змеиногорский тракт и Южный тракт, на севере виден центр Барнаула", true)}
-    <details class="find-live" data-map data-src="${widget}"><summary>Интерактивная карта Яндекса</summary><div class="find-facade"><p><button type="button" class="btn btn-white" data-map-load>Показать карту</button></p>
-      <p class="muted small">Карту предоставляет Яндекс. При загрузке Яндекс может получать данные о вашем посещении. Если карта не показалась, откройте её <a href="${open}" target="_blank" rel="noopener">на Яндекс.Картах</a>.</p></div></details>
+    <figure class="find-fig"><img src="${u("/img/map-district.webp")}" width="1400" height="860" alt="Обзорная карта: ООО «Дело» в районе Южный, подсвечены Южный тракт и Змеиногорский тракт, на севере центр Барнаула"><figcaption>Карта: © участники <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>.</figcaption></figure>
   </div>`;
-  page({ url: "/kontakty/", title: "Как нас найти: контакты и схема проезда", description: `${C.operator}: адрес, телефон, e-mail, схема проезда и карта района Южный, Барнаул. ${C.address}.`, section: "kontakty", body,
+  page({ url: "/kontakty/", title: "Как нас найти: контакты и схема проезда", description: `${C.operator}: адрес, телефон, e-mail и карта района Южный, Барнаул. ${C.address}.`, section: "kontakty", body,
     ld: [{ ...orgLd, geo: { "@type": "GeoCoordinates", latitude: K.lat, longitude: K.lon } }, crumbLd([["Как нас найти"]])] });
 }
 

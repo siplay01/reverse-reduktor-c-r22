@@ -6,9 +6,9 @@
   "kind": "гидравлический",
   "order": 1,
   "status": "ready",
-  "picture": "img/models/rrp300-foto.webp",
-  "picture_small": "img/models/rrp300-foto-640.webp",
-  "picture_alt": "Реверс-редукторная передача РРП-300, фото",
+  "picture": "img/models/illyustraciya-gidravlicheskij.webp",
+  "picture_small": "img/models/illyustraciya-gidravlicheskij-960.webp",
+  "picture_alt": "РРП-300: иллюстрация гидравлического реверс-редуктора",
   "applicability": "дизели 3Д6, 3Д12, ЯМЗ и их модификации",
   "key": [
     {

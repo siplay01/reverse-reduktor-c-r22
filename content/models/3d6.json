@@ -6,9 +6,9 @@
   "kind": "механический",
   "order": 3,
   "status": "ready",
-  "picture": "img/models/rrp3d6-foto.webp",
-  "picture_small": "img/models/rrp3d6-foto-640.webp",
-  "picture_alt": "Реверс-редукторная передача РРП-3Д6, фото",
+  "picture": "img/models/illyustraciya-mehanicheskij.webp",
+  "picture_small": "img/models/illyustraciya-mehanicheskij-960.webp",
+  "picture_alt": "РРП-3Д6: иллюстрация механического реверс-редуктора",
   "applicability": "дизели 3Д6 и их модификации",
   "key": [
     {

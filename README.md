@@ -1,4 +1,4 @@
-# Реверс-редуктор c-r22: portable static site + git-based admin (revision 22, published to the working slot repo reverse-reduktor-c-r22; c-r19 is the approved version and stays as it is)
+# Реверс-редуктор c-r23: portable static site + git-based admin (revision 23, published to the working slot repo reverse-reduktor-c-r23; c-r19 is the approved version and stays as it is)
 
 Revision 19 of the site (2026-11-04). Same look as `v6-demo/c-r18`, rebuilt so it can move between hosts (GitHub Pages, Russian shared hosting, .com, anything that serves files) and so every model, drawing and part has its own address for search engines.
 
@@ -19,7 +19,7 @@ node qa/owner-flow.mjs              # simulates the owner editing (photo, price 
 node qa/test.mjs                    # browser tests (Chromium + WebKit, 1360 and 390 px) + admin loads (needs internet for the CDN)
 ```
 
-Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r22` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
+Build options (environment): `SITE_URL` (absolute address for canonical and sitemap), `BASE` (path prefix, `/reverse-reduktor-c-r23` on GitHub Pages, empty on a domain), `INDEX=1` (allow indexing; without it every page is `noindex` and `robots.txt` disallows all). Moving hosts = change these three values and rebuild.
 
 ## Admin
 
@@ -37,7 +37,7 @@ Why Sveltia: it supports token sign-in (Decap does not), its local mode needs no
 
 ## Contacts page
 
-`/kontakty/` («Как нас найти»): address, phone, e-mail, route buttons that open Yandex Maps in a new tab, and two annotated maps that are plain images (they always show, no third-party code): a close-up with building No. 24 in red and the highlighted streets (ул. Зоотехническая, ул. Герцена), and a district map with Змеиногорский тракт and Южный тракт. Both are rendered from OpenStreetMap tiles and road/building geometry (© участники OpenStreetMap, credited on the page) by `node scripts/map/make-map.mjs` (needs internet; geometry cached in `scripts/map/osm-data.json`). An optional interactive Yandex map sits in a collapsed block and loads only after a click; a fallback link covers browsers that block it. Coordinates (53.2563675, 83.7063668) come from a one-time OSM lookup of the address and were checked on the Yandex map. The «Ориентиры» list, the «Как добраться» text and working hours are editable in the admin; directions and hours are empty until the owner supplies them (entrances and routes are not invented).
+`/kontakty/` («Как нас найти»): address, phone, e-mail and one own district map (OpenStreetMap data, plain image: Южный тракт and Змеиногорский тракт highlighted). No Yandex links or frames since c-r23.
 
 ## Content rules kept from earlier revisions
 

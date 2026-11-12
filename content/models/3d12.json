@@ -6,9 +6,9 @@
   "kind": "механический",
   "order": 4,
   "status": "ready",
-  "picture": "img/models/rrp3d12-foto.webp",
-  "picture_small": "img/models/rrp3d12-foto-640.webp",
-  "picture_alt": "Реверс-редукторная передача РРП-3Д12, фото",
+  "picture": "img/models/illyustraciya-mehanicheskij.webp",
+  "picture_small": "img/models/illyustraciya-mehanicheskij-960.webp",
+  "picture_alt": "РРП-3Д12: иллюстрация механического реверс-редуктора",
   "applicability": "дизели 3Д12 и их модификации, а также совместимые модели (3Д6, ЯМЗ)",
   "key": [
     {

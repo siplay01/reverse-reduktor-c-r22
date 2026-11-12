@@ -6,9 +6,9 @@
   "kind": "гидравлический",
   "order": 2,
   "status": "ready",
-  "picture": "img/models/rrp238-foto.webp",
-  "picture_small": "img/models/rrp238-foto-640.webp",
-  "picture_alt": "Реверс-редукторная передача РРП-238, фото",
+  "picture": "img/models/illyustraciya-gidravlicheskij.webp",
+  "picture_small": "img/models/illyustraciya-gidravlicheskij-960.webp",
+  "picture_alt": "РРП-238: иллюстрация гидравлического реверс-редуктора",
   "applicability": "дизели ЯМЗ-238 и их модификации",
   "key": [
     {
